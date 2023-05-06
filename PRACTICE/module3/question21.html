@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX Web Service Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <button id="get-data">Get Data</button>
+  <div id="output"></div>
+
+  <script>
+    $(document).ready(function() {
+      $("#get-data").click(function() {
+        $.ajax({
+          url: "https://jsonplaceholder.typicode.com/todos/1",
+          dataType: "json",
+          success: function(data) {
+            var output = "<ul>";
+            output += "<li>User ID: " + data.userId + "</li>";
+            output += "<li>ID: " + data.id + "</li>";
+            output += "<li>Title: " + data.title + "</li>";
+            output += "<li>Completed: " + data.completed + "</li>";
+            output += "</ul>";
+            $("#output").html(output);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
